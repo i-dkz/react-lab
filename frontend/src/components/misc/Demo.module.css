@@ -1,0 +1,18 @@
+.icon {
+  width: 22px;
+  height: 22px;
+}
+
+.dark .dark {
+  display: none;
+}
+.dark .light {
+  display: block;
+}
+
+.light .light {
+  display: none;
+}
+.light .dark {
+  display: block;
+}
