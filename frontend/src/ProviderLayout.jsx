@@ -23,7 +23,7 @@ const theme = mergeMantineTheme(DEFAULT_THEME, themeOverride);
 export default ({ children }) => {
   return (
     <>
-      <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
+      <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS defaultColorScheme="dark">
         <DrawerProvider>{children}</DrawerProvider>
       </MantineProvider>
     </>
