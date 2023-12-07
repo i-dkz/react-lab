@@ -5,6 +5,11 @@ import { Button, Container } from "@mantine/core";
 import ArticleCard from "../../components/misc/ArticleCard";
 
 function PostDetailsPage() {
+  const users = [
+    { id: 1, email: "john123@gmail.com", password: "123" },
+    { id: 2, email: "sandra123@gmail.com", password: "123" },
+  ];
+
   const posts = [
     {
       id: 1,
@@ -27,12 +32,24 @@ function PostDetailsPage() {
     },
   ];
 
+  const userWithEmail = users.find(
+    (user) => user.email === "john123@gmail.com"
+  );
+
+  // Access the email property if the user is found
+  if (userWithEmail) {
+    const userEmail = userWithEmail.email;
+    console.log(userEmail); // Output: "john123@gmail.com"
+  } else {
+    console.log("User not found");
+  }
+
   return (
     <>
       {posts.map((post) => (
         <ArticleCard
-          key={posts.id}
-          author={post.userId}
+          key={post.id}
+          author={users.find((user) => user.id === post.id).email.split("@")[0]}
           image={post.image}
           title={post.title}
           category={post.category}

@@ -34,9 +34,6 @@ export default function ArticleCard({
         <Container className={classes.container}>
           <Container className={classes.content}>
             <Text className={classes.title} fw={500} component="a">
-              {author}
-            </Text>
-            <Text className={classes.title} fw={500} component="a">
               {title}
             </Text>
             <Text className={classes.title} fw={500} component="a">
@@ -45,27 +42,11 @@ export default function ArticleCard({
             <Text fz="sm" c="dimmed" lineClamp={4}>
               {content}
             </Text>
+            
           </Container>
-          <img src={image} />
+          <Image src={image} style={{ width: '300px', height: '200px' }}/>
         </Container>
 
-        <Badge
-          className={classes.rating}
-          variant="gradient"
-          gradient={{ from: "yellow", to: "red" }}
-        >
-          outstanding
-        </Badge>
-        <Text className={classes.title} fw={500} component="a" {...linkProps}>
-          Resident Evil Village review
-        </Text>
-        <Text fz="sm" c="dimmed" lineClamp={4}>
-          Resident Evil Village is a direct sequel to 2017’s Resident Evil 7,
-          but takes a very different direction to its predecessor, namely the
-          fact that this time round instead of fighting against various mutated
-          zombies, you’re now dealing with more occult enemies like werewolves
-          and vampires.
-        </Text>
         <Group justify="space-between" className={classes.footer}>
           <Center>
             <Avatar
@@ -75,7 +56,7 @@ export default function ArticleCard({
               mr="xs"
             />
             <Text fz="sm" inline>
-              Bill Wormeater
+              {author}
             </Text>
           </Center>
           <Group gap={8} mr={0}>
