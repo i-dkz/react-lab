@@ -5,7 +5,7 @@ import {
   Image,
   Text,
   ActionIcon,
-  Badge,
+  Button,
   Group,
   Center,
   Avatar,
@@ -20,6 +20,7 @@ export default function ArticleCard({
   category,
   content,
   image,
+  isUserAuthor
 }) {
   const linkProps = {
     href: "https://mantine.dev",
@@ -27,6 +28,8 @@ export default function ArticleCard({
     rel: "noopener noreferrer",
   };
   const theme = useMantineTheme();
+
+  
 
   return (
     <div className={classes.body}>
@@ -59,6 +62,7 @@ export default function ArticleCard({
               {author}
             </Text>
           </Center>
+         {isUserAuthor && <Button>Edit</Button>}
           <Group gap={8} mr={0}>
             <ActionIcon className={classes.action}>
               <IconHeart

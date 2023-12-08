@@ -30,6 +30,10 @@ function PostDetailsPage() {
   const content = postData.find((obj) => obj.id === intId).content;
   const image = postData.find((obj) => obj.id === intId).image;
 
+  const isUserAuthor = authorId === userId;
+
+  console.log(isUserAuthor)
+
   return (
     <>
       <ArticleCard 
@@ -38,6 +42,7 @@ function PostDetailsPage() {
       category={category}
       content={content}
       image={image}
+      isUserAuthor={isUserAuthor}
      />
     </>
   );
