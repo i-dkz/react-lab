@@ -13,7 +13,7 @@ const EditPage = () => {
   const title = details.find((obj) => obj.id === parseInt(id)).title;
   const category = details.find((obj) => obj.id === parseInt(id)).category;
   const image = details.find((obj) => obj.id === parseInt(id)).image;
-  const content = details.find((obj) => obj.id === parseInt(id)).content;
+  const content = details.find((obj) => obj.id  === parseInt(id)).content;
 
   console.log(title);
 
