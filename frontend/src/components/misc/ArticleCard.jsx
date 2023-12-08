@@ -13,6 +13,7 @@ import {
   rem,
 } from "@mantine/core";
 import classes from "./ArticleCard.module.css";
+import { Link } from "react-router-dom";
 
 export default function ArticleCard({
   author,
@@ -62,7 +63,7 @@ export default function ArticleCard({
               {author}
             </Text>
           </Center>
-         {isUserAuthor && <Button>Edit</Button>}
+         {isUserAuthor && <Link to='./edit'><Button>Edit</Button></Link>}
           <Group gap={8} mr={0}>
             <ActionIcon className={classes.action}>
               <IconHeart
