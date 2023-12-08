@@ -22,14 +22,13 @@ function PostDetailsPage() {
 
   const intId = parseInt(id);
 
-  console.log(intId);
-  
-  
-  const author = authorData?.find((obj) => obj.id === userId)?.email?.split("@")[0] || '';
-  const title = postData.find((obj) => obj.id === intId)['title'];
-  const category = postData.find((obj) => obj.id === intId)['category'];
-  const content = postData.find((obj) => obj.id === intId)['content'];
-  const image = postData.find((obj) => obj.id === intId)['image'];
+  const authorId = postData?.find((obj) => obj.id === intId)?.userId
+
+  const author = authorData?.find((obj) => obj.id === authorId)?.email?.split("@")[0] || '';
+  const title = postData.find((obj) => obj.id === intId).title;
+  const category = postData.find((obj) => obj.id === intId).category;
+  const content = postData.find((obj) => obj.id === intId).content;
+  const image = postData.find((obj) => obj.id === intId).image;
 
   return (
     <>
