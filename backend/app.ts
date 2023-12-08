@@ -9,6 +9,7 @@ import {
   addPost,
   posts,
   sleep,
+  users
 } from "./fakedb";
 
 const port = 8085;
@@ -54,6 +55,10 @@ app.get("/api/posts/:id", (req, res) => {
   res.json(posts[0]);
 });
 
+app.get("/api/users", async (req, res) => {
+  // Sleep delay goes here
+  res.json(users);
+});
 /**
  * Problems with this:
  * (1) Authorization Issues:

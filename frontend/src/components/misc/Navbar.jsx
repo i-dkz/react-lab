@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./Navbar.module.css";
 import { MantineLogo } from "@mantine/ds";
-import { Container, Group, Burger, Drawer, Stack } from "@mantine/core";
+import { Container, Group, Burger, Drawer, Stack, Text } from "@mantine/core";
 import useLinks from "./useLinks";
 import { DrawerContext } from "../../Contexts/drawerContext";
 import Toggle from "./Toggle";
 
 const Navbar = () => {
   const { opened, toggle } = React.useContext(DrawerContext);
-  const [items] = useLinks();
+  const items = useLinks();
 
   return (
     <header className={classes.header}>
@@ -16,7 +16,7 @@ const Navbar = () => {
         <MantineLogo size={28} />
         <Group gap={16} visibleFrom="xs">
           <Toggle />
-          <Group  gap={5} visibleFrom="xs">{items}</Group>
+          <Group  gap={5} visibleFrom="xs">{items.map((item, index) => <Text key={index}>{item}</Text>)}</Group>
         </Group>
 
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
