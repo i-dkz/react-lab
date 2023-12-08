@@ -3,9 +3,16 @@ import DOMAIN from "../../services/endpoint";
 import axios from "axios";
 import { useForm } from "@mantine/form";
 import { useNavigate } from "react-router-dom";
+import { getAccessToken } from "../../services/jwt.service";
 
 function CreatePostPage() {
+  const jwtToken = getAccessToken();
+
+  const [header, payload] = jwtToken.split(".");
+  const decodedPayload = JSON.parse(atob(payload));
+  const userId = decodedPayload.id;
   const navigate = useNavigate();
+
   const form = useForm({
     initialValues: {
       title: "",
@@ -16,7 +23,13 @@ function CreatePostPage() {
   });
 
   const handleSubmit = async (values) => {
-    const res = await axios.post(`${DOMAIN}/api/posts`, values);
+    const postData = {
+      ...values,
+      userId: userId,
+    };
+  
+    const res = await axios.post(`${DOMAIN}/api/posts`, postData);
+  
     if (res?.data.success) {
       navigate("/posts");
     }

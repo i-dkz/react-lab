@@ -2,7 +2,6 @@ import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import DOMAIN from "../../services/endpoint";
 import axios from "axios";
 import ArticleCard from "../../components/misc/ArticleCard";
-import { getAccessToken } from "../../services/jwt.service";
 import { useState, useEffect } from "react";
 
 function PostDetailsPage() {
@@ -27,11 +26,8 @@ function PostDetailsPage() {
   const intId = parseInt(id)
 
   const posts = useLoaderData();
-  const jwtToken = getAccessToken();
 
-  const [header, payload] = jwtToken.split(".");
-  const decodedPayload = JSON.parse(atob(payload));
-  const userId = decodedPayload.id;
+  console.log(posts)
 
   const author = userData?.find((obj) => obj.id === intId)['email'].split('@')[0];
   const title = posts.find((obj) => obj.id === intId)['title']
@@ -54,13 +50,13 @@ function PostDetailsPage() {
 
 export const postDetailsLoader = async ({ params }) => {
   const res = await axios.get(`${DOMAIN}/api/posts`);
-  console.log("I ran!");
+
   return res.data;
 };
 
 export const userDetailsLoader = async ({ params }) => {
   const res = await axios.get(`${DOMAIN}/api/users`);
-  console.log("I ran!");
+
   return res.data;
 };
 
