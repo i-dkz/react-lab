@@ -34,13 +34,19 @@ function PostDetailsPage() {
   const userId = decodedPayload.id;
 
   const author = userData?.find((obj) => obj.id === intId)['email'].split('@')[0];
-  // const title = posts
+  const title = posts.find((obj) => obj.id === intId)['title']
+  const category = posts.find((obj) => obj.id === intId)['category']
+  const content = posts.find((obj) => obj.id === intId)['content']
+  const image = posts.find((obj) => obj.id === intId)['image']
 
   return (
     <>
       <ArticleCard 
       author={author}
-      title={posts.title}
+      title={title}
+      category={category}
+      content={content}
+      image={image}
      />
     </>
   );
