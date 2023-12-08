@@ -44,6 +44,10 @@ export const addPost = (post: any) => {
   
 };
 
+export const updatePost = (post: any) => {
+  posts.push(post)
+}
+
 export const verifyUser = (email: string, password: string) => {
   const user = users.find((user) => {
     return user.email === email && user.password === password;

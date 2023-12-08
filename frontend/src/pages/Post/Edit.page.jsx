@@ -4,51 +4,59 @@ import { useForm } from "@mantine/form";
 import DOMAIN from "../../services/endpoint";
 import axios from "axios";
 
-
 const EditPage = () => {
+  const details = useLoaderData();
+  const { id } = useParams();
+
+  console.log(id);
+
+  const title = details.find((obj) => obj.id === parseInt(id)).title;
+  const category = details.find((obj) => obj.id === parseInt(id)).category;
+  const image = details.find((obj) => obj.id === parseInt(id)).image;
+  const content = details.find((obj) => obj.id === parseInt(id)).content;
+
+  console.log(title);
+
   const form = useForm({
     initialValues: {
-      title: "",
-      category: "",
-      image: "",
-      content: "",
+      title: title,
+      category: category,
+      image: image,
+      content: content,
     },
   });
-  const handleSubmit = async (values) => {
-    const postData = {
-      ...values,
-      userId: userId,
-    };
 
-    const res = await axios.post(`${DOMAIN}/api/posts`, postData);
+  const handleSubmit = async (values) => {
+    const res = await axios.put(`${DOMAIN}/api/posts/${id}`, values);
 
     if (res?.data.success) {
       navigate("/posts");
     }
   };
+
   return (
     <Box maw={300} mx="auto">
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <TextInput
           label="Title"
-          placeholder="Enter a Title"
+          value={title}
           {...form.getInputProps("title")}
         />
 
         <TextInput
           label="Category"
-          placeholder="Enter a Category"
+          value={category}
           {...form.getInputProps("category")}
         />
         <TextInput
           label="Image"
-          placeholder="Enter an Image"
+          value={image}
           {...form.getInputProps("image")}
         />
 
         <TextInput
           label="Content"
-          placeholder="Enter some content"
+          value={content}
           {...form.getInputProps("content")}
         />
 
@@ -62,7 +70,7 @@ const EditPage = () => {
 
 export const editDetailsLoader = async ({ params }) => {
   const res = await axios.get(`${DOMAIN}/api/posts`);
-  return [res.data];
+  return res.data;
 };
 
 export default EditPage;

@@ -9,7 +9,8 @@ import {
   addPost,
   posts,
   sleep,
-  users
+  users,
+  updatePost
 } from "./fakedb";
 
 const port = 8085;
@@ -75,4 +76,14 @@ app.post("/api/posts", (req, res) => {
   res.status(200).json({ success: true });
 });
 
+app.put("/api/posts/:id", (req, res) => {
+  const incomingPut = req.body;
+  updatePost(incomingPut);
+  res.status(200).json({ success: true });
+});
+
+
+
 app.listen(port, () => console.log("Server is running"));
+
+
