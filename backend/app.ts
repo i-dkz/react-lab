@@ -77,11 +77,14 @@ app.post("/api/posts", (req, res) => {
 });
 
 app.put("/api/posts/:id", (req, res) => {
-  const incomingPut = req.body;
-  updatePost(incomingPut);
+  const postId = req.params.id;
+  const updatedPost = req.body;
+
+  // Update the post with the given ID
+  updatePost({ ...updatedPost, id: parseInt(postId) });
+
   res.status(200).json({ success: true });
 });
-
 
 
 app.listen(port, () => console.log("Server is running"));

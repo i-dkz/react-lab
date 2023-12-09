@@ -1,12 +1,14 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { TextInput, Button, Group, Box } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useNavigate } from "react-router-dom";
 import DOMAIN from "../../services/endpoint";
 import axios from "axios";
 
 const EditPage = () => {
   const details = useLoaderData();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   console.log(id);
 

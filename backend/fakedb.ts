@@ -44,9 +44,18 @@ export const addPost = (post: any) => {
   
 };
 
-export const updatePost = (post: any) => {
-  posts.push(post)
-}
+export const updatePost = (updatedPost: any) => {
+  const postIndex = posts.findIndex((post) => post.id === updatedPost.id);
+
+  if (postIndex !== -1) {
+    // If post with the same ID is found, update it
+    posts[postIndex] = { ...posts[postIndex], ...updatedPost };
+  } else {
+    // If post with the ID is not found, push the updated post
+    posts.push(updatedPost);
+  }
+};
+
 
 export const verifyUser = (email: string, password: string) => {
   const user = users.find((user) => {

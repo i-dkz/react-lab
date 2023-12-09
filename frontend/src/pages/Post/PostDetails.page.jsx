@@ -25,10 +25,10 @@ function PostDetailsPage() {
   const authorId = postData?.find((obj) => obj.id === intId)?.userId
 
   const author = authorData?.find((obj) => obj.id === authorId)?.email?.split("@")[0] || '';
-  const title = postData.find((obj) => obj.id === intId).title;
-  const category = postData.find((obj) => obj.id === intId).category;
-  const content = postData.find((obj) => obj.id === intId).content;
-  const image = postData.find((obj) => obj.id === intId).image;
+  const title = postData?.find((obj) => obj.id === intId)?.title;
+  const category = postData?.find((obj) => obj.id === intId)?.category;
+  const content = postData?.find((obj) => obj.id === intId)?.content;
+  const image = postData?.find((obj) => obj.id === intId)?.image;
 
   const isUserAuthor = authorId === userId;
 
